@@ -69,7 +69,7 @@ jobs:
       uses: actions/cache/restore@v4
       with:
         path: install
-        key: hoomd-blue-${{ env.HOOMD_BLUE_VERSION }}-${{ matrix.enable_mpi }}-gpu-${{ matrix.enable_gpu }}
+        key: hoomd-blue-${{ env.HOOMD_BLUE_VERSION }}-mpi-${{ matrix.enable_mpi }}-gpu-${{ matrix.enable_gpu }}
     - name: Install git
       run: |
         apt-get update
@@ -119,7 +119,7 @@ jobs:
       uses: actions/cache/save@v4
       with:
         path: install
-        key: hoomd-blue-${{ env.HOOMD_BLUE_VERSION }}-${{ matrix.enable_mpi }}-gpu-${{ matrix.enable_gpu }}
+        key: ${{ steps.cache.outputs.cache-primary-key }}
 
     - name: Checkout component
       uses: actions/checkout@v4
