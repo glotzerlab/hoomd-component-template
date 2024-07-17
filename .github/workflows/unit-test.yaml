@@ -66,6 +66,8 @@ jobs:
       with:
         path: ./install
         key: hoomd-blue-${{ env.HOOMD_BLUE_VERSION }}-mpi-${{ matrix.enable_mpi }}-gpu-${{ matrix.enable_gpu }}
+        restore-keys: |
+          hoomd-blue-${{ env.HOOMD_BLUE_VERSION }}-mpi-${{ matrix.enable_mpi }}-gpu-${{ matrix.enable_gpu }}
     - name: Install git
       run: |
         apt-get update
