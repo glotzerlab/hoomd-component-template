@@ -20,10 +20,6 @@ env:
   OMPI_MCA_rmaps_base_oversubscribe: "true"
   # prevent errors from mis-configured openib systems
   OMPI_MCA_btl: "vader,self"
-  # skip running the CPU tests in GPU builds
-  _HOOMD_SKIP_CPU_TESTS_WHEN_GPUS_PRESENT_: 1
-  # Require GPU tests in GPU builds.
-  _HOOMD_REQUIRE_GPU_TESTS_IN_GPU_BUILDS_: 1
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -131,7 +127,7 @@ jobs:
       working-directory: build-component
 
     - name: Run pytest (serial)
-      run: python3 -m pytest --pyargs hoomd -k "hoomd.${COMPONENT_NAME}" -x -v -ra --durations=0 --durations-min=0.1
+      run: python3 -m pytest --pyargs hoomd.${COMPONENT_NAME} -x -v -ra --durations=0 --durations-min=0.1
     - name: Run pytest (MPI)
       if: ${{ matrix.enable_mpi == 'ON' }}
-      run: mpirun -n 2 ${GITHUB_WORKSPACE}/install/hoomd/pytest/pytest-openmpi.sh --pyargs hoomd -k "hoomd.${COMPONENT_NAME}" -x -v -ra --durations=0 --durations-min=0.1 || (( cat pytest.out.1 && exit 1 ))
+      run: mpirun -n 2 ${GITHUB_WORKSPACE}/install/hoomd/pytest/pytest-openmpi.sh --pyargs hoomd.${COMPONENT_NAME} -x -v -ra --durations=0 --durations-min=0.1 || (( cat pytest.out.1 && exit 1 ))
