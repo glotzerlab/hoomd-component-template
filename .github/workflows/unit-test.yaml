@@ -66,9 +66,9 @@ jobs:
     steps:
     - name: Restore cached HOOMD-blue build
       id: cache
-      uses: actions/cache@v4
+      uses: actions/cache/restore@v4
       with:
-        path: install
+        path: ./install
         key: hoomd-blue-${{ env.HOOMD_BLUE_VERSION }}-mpi-${{ matrix.enable_mpi }}-gpu-${{ matrix.enable_gpu }}
     - name: Install git
       run: |
@@ -118,7 +118,7 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       uses: actions/cache/save@v4
       with:
-        path: install
+        path: ./install
         key: hoomd-blue-${{ env.HOOMD_BLUE_VERSION }}-mpi-${{ matrix.enable_mpi }}-gpu-${{ matrix.enable_gpu }}
     - name: Checkout component
       uses: actions/checkout@v4
