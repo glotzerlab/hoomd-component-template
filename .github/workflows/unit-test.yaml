@@ -60,6 +60,9 @@ jobs:
           enable_mpi: 'ON'
 
     steps:
+    # zstd is required for actions/cache to operate correctly: https://github.com/actions/cache/issues/1455
+    - name: Install zstd
+      run: apt-get install zstd
     - name: Restore cached HOOMD-blue build
       id: cache
       uses: actions/cache/restore@v4
