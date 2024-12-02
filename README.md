@@ -1,9 +1,9 @@
-# HOOMD-blue component template
+# HOOMD-blue component template for HPMC shapes
 
-`hoomd-component-template` provides a framework to develop components that extend
-[**HOOMD-blue**](https://glotzerlab.engin.umich.edu/hoomd-blue/). It includes template C++ and
-Python modules, an example unit test, CMake scripts to build the component, and GitHub Actions
-workflows.
+`hoomd-hpmc-shape-template` provides a framework to develop components that extend
+[**HOOMD-blue**](https://glotzerlab.engin.umich.edu/hoomd-blue/) with new hard shapes.
+It includes template C++ and Python modules, an example unit test, CMake scripts to
+build the component, and GitHub Actions workflows.
 
 ## Building the component
 
@@ -12,19 +12,19 @@ To build this component:
 1. Build and install **HOOMD-blue** from source.
 2. Obtain the component's source.
     ```
-    $ git clone https://github.com/glotzerlab/hoomd-component-template
+    $ git clone https://github.com/glotzerlab/hoomd-hpmc-shape-template
     ```
 3. Configure.
     ```
-    $ cmake -B build/hoomd-component-template -S hoomd-component-template
+    $ cmake -B build/hoomd-hpmc-shape-template -S hoomd-hpmc-shape-template
     ```
 4. Build the component.
     ```
-    $ cmake --build build/hoomd-component-template
+    $ cmake --build build/hoomd-hpmc-shape-template
     ```
 5. Install the component.
     ```
-    $ cmake --install build/hoomd-component-template
+    $ cmake --install build/hoomd-hpmc-shape-template
     ```
 
 Once installed, the template is available for import via:
@@ -37,7 +37,7 @@ import hoomd.template
 
 To create a new component:
 
-1. Fork [hoomd-component-template](https://github.com/glotzerlab/hoomd-component-template/).
+1. Fork [hoomd-hpmc-shape-template](https://github.com/glotzerlab/hoomd-hpmc-shape-template/).
 2. Address all **TODO** comments (including those in `.github/`)
 3. Add C++ and Python files to `src/`.
 4. Add unit tests in `src/pytest`.
@@ -57,7 +57,7 @@ new GitHub release with automatically generated release notes.
 ## Maintaining your component
 
 The HOOMD-blue developers will periodically update
-[hoomd-component-template](https://github.com/glotzerlab/hoomd-component-template/), including
+[hoomd-hpmc-shape-template](https://github.com/glotzerlab/hoomd-hpmc-shape-template/), including
 updates to the GitHub Actions workflow, pre-commit configuration, and CMake scripts. Merge these
 changes into your fork to support the latest version of HOOMD-blue.
 

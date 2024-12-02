@@ -6,3 +6,4 @@
 
 # TODO: Import all Python modules in your component.
 from . import version
+from .integrate import MySphere
