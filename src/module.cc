@@ -3,10 +3,10 @@
 
 // TODO: Include the header files of classes that will be exported to Python.
 
-#include <pybind11/pybind11.h>
 #include "hoomd/hpmc/ComputeFreeVolume.h"
 #include "hoomd/hpmc/IntegratorHPMC.h"
 #include "hoomd/hpmc/IntegratorHPMCMono.h"
+#include <pybind11/pybind11.h>
 
 #include "hoomd/hpmc/ComputeSDF.h"
 #include "hoomd/hpmc/ShapeUnion.h"
@@ -36,7 +36,7 @@ namespace hpmc
 // CMakeLists.txt), prefixed with an underscore.
 PYBIND11_MODULE(_template, m)
     {
-        // TODO: Call export_Class(m) for each C++ class to be exported to Python.
+    // TODO: Call export_Class(m) for each C++ class to be exported to Python.
     export_IntegratorHPMCMono<ShapeMySphere>(m, "IntegratorHPMCMonoMySphere");
     export_ComputeFreeVolume<ShapeMySphere>(m, "ComputeFreeVolumeMySphere");
     export_ComputeSDF<ShapeMySphere>(m, "ComputeSDFMySphere");
@@ -50,13 +50,13 @@ PYBIND11_MODULE(_template, m)
         .def("asDict", &MySphereParams::asDict);
 
 #ifdef ENABLE_HIP
-        // TODO: Call export_ClassGPU(m) for each GPU enabled C++ class to be exported
-        // to Python.
+    // TODO: Call export_ClassGPU(m) for each GPU enabled C++ class to be exported
+    // to Python.
     export_IntegratorHPMCMonoGPU<ShapeMySphere>(m, "IntegratorHPMCMonoMySphereGPU");
     export_ComputeFreeVolumeGPU<ShapeMySphere>(m, "ComputeFreeVolumeMySphereGPU");
-    export_UpdaterGCAGPU<ShapeMySphere>(m, "UpdaterGCAMySphereGPU");        
+    export_UpdaterGCAGPU<ShapeMySphere>(m, "UpdaterGCAMySphereGPU");
 #endif
     }
 
-    } // end namespace md
+    } // namespace hpmc
     } // end namespace hoomd

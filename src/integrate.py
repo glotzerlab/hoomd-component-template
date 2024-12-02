@@ -4,9 +4,9 @@
 """Example Shape Integrator."""
 
 # Import the C++ module
-from . import _template
-
 import hoomd
+
+from . import _template
 
 
 class MySphere(hoomd.hpmc.integrate.HPMCIntegrator):
@@ -14,7 +14,7 @@ class MySphere(hoomd.hpmc.integrate.HPMCIntegrator):
 
     # set static class data
     _ext_module = _template
-    _cpp_cls = "IntegratorHPMCMonoMySphere"
+    _cpp_cls = 'IntegratorHPMCMonoMySphere'
 
     def __init__(
         self,
@@ -30,15 +30,15 @@ class MySphere(hoomd.hpmc.integrate.HPMCIntegrator):
         )
 
         typeparam_shape = hoomd.data.typeparam.TypeParameter(
-            "shape",
-            type_kind="particle_types",
+            'shape',
+            type_kind='particle_types',
             param_dict=hoomd.data.parameterdicts.TypeParameterDict(
                 radius=float, ignore_statistics=False, orientable=False, len_keys=1
             ),
         )
         self._add_typeparam(typeparam_shape)
 
-    @hoomd.logging.log(category="object", requires_run=True)
+    @hoomd.logging.log(category='object', requires_run=True)
     def type_shapes(self):
         """list[dict]: Description of shapes in ``type_shapes`` format."""
         return super()._return_type_shapes()
