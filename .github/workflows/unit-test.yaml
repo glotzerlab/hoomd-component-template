@@ -41,7 +41,7 @@ jobs:
     name: Build and test [${{ matrix.name }}]
     runs-on: ubuntu-24.04
     container:
-      image: nvidia/cuda:12.5.0-devel-ubuntu22.04
+      image: nvidia/cuda:12.5.0-devel-ubuntu22.04@sha256:4b46c69e223d971f0fb279fd6381a0f3a057e09ba6de08bfbf7db751b1ad6db1
     strategy:
       fail-fast: false
       matrix:
@@ -61,12 +61,12 @@ jobs:
 
     steps:
     - name: Checkout component
-      uses: actions/checkout@v4
+      uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
       with:
         path: component
     - name: Restore cached HOOMD-blue build
       id: cache
-      uses: actions/cache/restore@v4
+      uses: actions/cache/restore@0400d5f644dc74513175e3cd8d07132dd4860809 # v4
       with:
         path: install
         key: hoomd-blue-${{ env.HOOMD_BLUE_VERSION }}-${{ matrix.enable_mpi }}-gpu-${{ matrix.enable_gpu }}
@@ -75,7 +75,7 @@ jobs:
         apt-get update
         apt-get install git --yes
     - name: Checkout HOOMD-blue
-      uses: actions/checkout@v4
+      uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
       with:
         repository: glotzerlab/hoomd-blue
         path: hoomd-blue
@@ -114,7 +114,7 @@ jobs:
       working-directory: build-hoomd-blue
     - name: Cache HOOMD-blue build
       if: steps.cache.outputs.cache-hit != 'true'
-      uses: actions/cache/save@v4
+      uses: actions/cache/save@0400d5f644dc74513175e3cd8d07132dd4860809 # v4
       with:
         path: install
         key: hoomd-blue-${{ env.HOOMD_BLUE_VERSION }}-${{ matrix.enable_mpi }}-gpu-${{ matrix.enable_gpu }}
