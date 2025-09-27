@@ -41,7 +41,7 @@ jobs:
     name: Build and test [${{ matrix.name }}]
     runs-on: ubuntu-24.04
     container:
-      image: nvidia/cuda:12.5.0-devel-ubuntu22.04@sha256:4b46c69e223d971f0fb279fd6381a0f3a057e09ba6de08bfbf7db751b1ad6db1
+      image: nvidia/cuda:12.9.1-devel-ubuntu22.04@sha256:bd4e2680a261c212f1e2fea241606f71497dc67a417f73175d794ec8212b5ba8
     strategy:
       fail-fast: false
       matrix:
