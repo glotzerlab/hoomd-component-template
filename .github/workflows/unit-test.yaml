@@ -9,7 +9,7 @@ env:
 
   #############################################################################################
   # HOOMD-blue version to build.
-  HOOMD_BLUE_VERSION: 1ba4d42921139e96981aa8f210d130e16cee6314
+  HOOMD_BLUE_VERSION: v7.0.1
   # prevent deadlocked MPI tests from causing the job to cancel
   MPIEXEC_TIMEOUT: 3000
   # allow mpirun to execute as root in the tests
